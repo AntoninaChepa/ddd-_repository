@@ -1,0 +1,208 @@
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+antonina@antonina:~$ ipython
+Python 2.7.9 (default, Apr  2 2015, 15:33:21) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 2.3.0 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: import pandas as pd
+
+In [2]: import numpy as np
+
+In [3]: s=pd.Series([1,2,3,4,5], index=list('abcde'))
+
+In [4]: data={'one':s**s, 'two':s+1}
+
+In [5]: df=pd.DataFrame(data)
+
+In [6]: df
+Out[6]: 
+    one  two
+a     1    2
+b     4    3
+c    27    4
+d   256    5
+e  3125    6
+
+In [7]: df=pd{'one':s}
+  File "<ipython-input-7-3276070e1e39>", line 1
+    df=pd{'one':s}
+         ^
+SyntaxError: invalid syntax
+
+
+In [8]: df=pd.DataFrame{'one':s}
+  File "<ipython-input-8-496fba5193d9>", line 1
+    df=pd.DataFrame{'one':s}
+                   ^
+SyntaxError: invalid syntax
+
+
+In [9]: data={'one':s}
+
+In [10]: df=pd.DataFrame(data)
+
+In [11]: df
+Out[11]: 
+   one
+a    1
+b    2
+c    3
+d    4
+e    5
+
+In [12]: data={'one':s**s, 'two':s+1}
+
+In [13]: df=pd.DataFrame(data)
+
+In [17]: 
+
+In [17]: 
+
+In [17]: 
+
+In [17]: 
+
+In [17]: data=np.random.randn(5,2)
+
+In [18]: df=pd.DataFrame(data, index=list('abcde'), columns = ['one','two'])
+
+In [19]: col = df.one
+
+In [20]: type(col)
+Out[20]: pandas.core.series.Series
+
+In [21]: row=df.xs('b')
+
+In [22]: type(row)
+Out[22]: pandas.core.series.Series
+
+In [27]: data=np.random.randn(5,2)
+
+In [30]: df
+Out[30]: 
+        one       one
+a -0.993589  0.527854
+b -1.450409 -0.430943
+b -1.001482 -0.635397
+c -1.247002  0.281094
+d  1.726751 -0.088449
+
+In [31]: col = df.one
+
+In [32]: type(col)
+Out[32]: pandas.core.frame.DataFrame
+
+In [33]: df.ix('a')
+Out[33]: <pandas.core.indexing._IXIndexer at 0x7ff05fc1e110>
+
+In [34]: df
+Out[34]: 
+        one       one
+a -0.993589  0.527854
+b -1.450409 -0.430943
+b -1.001482 -0.635397
+c -1.247002  0.281094
+d  1.726751 -0.088449
+
+In [35]: df.mean()
+Out[35]: 
+one   -0.593146
+one   -0.069168
+dtype: float64
+
+In [36]: type(df)
+Out[36]: pandas.core.frame.DataFrame
+
+In [37]: type(df.mean())
+Out[37]: pandas.core.series.Series
+
+In [38]: df.plot<()
+Out[38]: True
+
+In [39]: df.plot()
+Out[39]: <matplotlib.axes._subplots.AxesSubplot at 0x7ff05d3c0c10>
+
+In [40]: type(df.mean())
+Out[40]: pandas.core.series.Series
+
+In [41]: df
+Out[41]: 
+        one       one
+a -0.993589  0.527854
+b -1.450409 -0.430943
+b -1.001482 -0.635397
+c -1.247002  0.281094
+d  1.726751 -0.088449
+
+In [42]: data = np.random.randn(3,4)
+
+In [43]: data = np.random.randn(5)
+
+In [44]: data
+Out[44]: array([ 0.65438467,  1.27858275,  1.10304079,  0.53921219, -1.24199311])
+
+............................................................................................
+
+In [1]: import pandas as pd
+
+In [2]: import numpy as np
+
+In [3]: data = [1,2,3,4,5]
+
+In [4]: data = np.random.randn(2,4)
+
+In [8]: df1=pd.DataFrame(data, index = list('ab'), columns = ['a','b','c','d'])
+
+In [9]: df2=pd.DataFrame(np.random.randn(2,4), index = list('cd'), columns = ['a','b','c','d']
+   ...: )
+
+In [10]: df3=df1.copy()
+
+In [11]: df=pd.concat([df1,df2])
+
+In [13]: df=df1.append(df2)
+
+In [14]: df
+Out[14]: 
+          a         b         c         d
+a -0.651827 -0.237232 -0.531391 -0.236269
+b  0.700363  0.124969 -0.336658 -0.365522
+c  1.197281 -0.003958 -0.255261  0.245099
+d  1.106518 -0.797988 -1.442182 -0.336463
+
+In [15]: df3
+Out[15]: 
+          a         b         c         d
+a -0.651827 -0.237232 -0.531391 -0.236269
+b  0.700363  0.124969 -0.336658 -0.365522
+
+In [16]: df3=df1.append(df2)
+
+In [17]: df3
+Out[17]: 
+          a         b         c         d
+a -0.651827 -0.237232 -0.531391 -0.236269
+b  0.700363  0.124969 -0.336658 -0.365522
+c  1.197281 -0.003958 -0.255261  0.245099
+d  1.106518 -0.797988 -1.442182 -0.336463
+
+In [18]: df=pd.concat([df1, df2])
+
+
+In [20]: df
+Out[20]: 
+          a         b         c         d
+a -0.651827 -0.237232 -0.531391 -0.236269
+b  0.700363  0.124969 -0.336658 -0.365522
+c  1.197281 -0.003958 -0.255261  0.245099
+d  1.106518 -0.797988 -1.442182 -0.336463
+
+In [21]: 
+
